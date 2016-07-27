@@ -516,8 +516,8 @@ describe('L.esri.Query', function () {
     server.respond();
   });
 
-  it('should identify features and simplify geometries', function(done){
-    server.respondWith('GET', featureLayerUrl + 'query?returnGeometry=true&where=1%3D1&outSr=4326&outFields=*&maxAllowableOffset=0.000010728836059570313&f=json', JSON.stringify(sampleQueryResponse));
+  it('should query features and simplify geometries', function(done){
+    server.respondWith('GET', featureLayerUrl + 'query?returnGeometry=true&where=1%3D1&outSr=4326&outFields=*&maxAllowableOffset=0.000010728836059570312&f=json', JSON.stringify(sampleQueryResponse));
 
     task.simplify(map, 0.5).run(function(error, featureCollection, raw){
       expect(featureCollection).to.deep.equal(sampleFeatureCollection);

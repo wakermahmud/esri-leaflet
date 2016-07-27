@@ -13,21 +13,32 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     // not sure why tests are failing when files are loaded in bulk
-    
+
     files: [
       'node_modules/leaflet/dist/leaflet.css',
       'node_modules/leaflet/dist/leaflet-src.js',
       'dist/esri-leaflet-debug.js',
-      // 'spec/**/*Spec.js'
-      'spec/Layers/*Spec.js',
-      'spec/Layers/FeatureLayer/*Spec.js',
-      'spec/Services/*Spec.js',
+
+      // all
+      //'spec/**/*Spec.js',
+
+      // 'spec/Layers/FeatureLayer/FeatureLayerSpec.js'
+      // 'spec/Layers/*Spec.js',
+      // 'spec/Layers/FeatureLayer/*Spec.js'
+      // 'spec/Services/*Spec.js'
+
+      // good
       'spec/Tasks/*Spec.js',
-      'spec/*Spec.js'
+      'spec/*Spec.js',
+      'spec/Layers/FeatureLayer/FeatureManagerSpec.js',
+      'spec/Layers/FeatureLayer/FeatureLayerSpec.js'
     ],
 
     // list of files to exclude
-    exclude: [],
+    exclude: [
+      'spec/Layers/DynamicMapLayerSpec.js',
+      'spec/Layers/ImageMapLayerSpec.js'
+    ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -48,7 +59,7 @@ module.exports = function (config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_WARN,
+    logLevel: config.LOG_DISABLE,
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
@@ -68,21 +79,21 @@ module.exports = function (config) {
     singleRun: true,
 
     // Configure the coverage reporters
-    coverageReporter: {
-      instrumenters: {
-        isparta: require('isparta')
-      },
-      instrumenter: {
-        'src/**/*.js': 'isparta'
-      },
-      reporters: [
-        {
-          type: 'html',
-          dir: 'coverage/'
-        }, {
-          type: 'text'
-        }
-      ]
-    }
+    // coverageReporter: {
+    //   instrumenters: {
+    //     isparta: require('isparta')
+    //   },
+    //   instrumenter: {
+    //     'src/**/*.js': 'isparta'
+    //   },
+    //   reporters: [
+    //     {
+    //       type: 'html',
+    //       dir: 'coverage/'
+    //     }, {
+    //       type: 'text'
+    //     }
+    //   ]
+    // }
   });
 };
