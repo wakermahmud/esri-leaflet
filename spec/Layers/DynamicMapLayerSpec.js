@@ -281,7 +281,7 @@ describe('L.esri.DynamicMapLayer', function () {
 
   it('should pass a token if one is set', function(done){
     server.respondWith('GET', new RegExp(/http:\/\/services.arcgis.com\/mock\/arcgis\/rest\/services\/MockMapService\/MapServer\/export\?bbox=-?\d+\.\d+%2C-?\d+\.\d+%2C-?\d+\.\d+%2C-?\d+\.\d+&size=500%2C500&dpi=96&format=png24&transparent=true&bboxSR=3857&imageSR=3857&token=foo&f=json/), JSON.stringify({
-      href: WithToken
+      href: Image1
     }));
 
     layer.once('load', function(){
